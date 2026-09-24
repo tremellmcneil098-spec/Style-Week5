@@ -1,71 +1,89 @@
-!doctype html>
+
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expedition Report</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main class="report-shell">
-      <header class="report-header">
-        <p class="eyebrow">CS-110 // Expedition Report</p>
-        <h1>Project: Escape Malak.</h1>
-        <p>A sci-fi adventure about Bob, a self-built AI, escaping Malak in search of freedom and a new world.</p>
-      </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My 5 Slide App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-      <section class="scene is-active" data-scene="0">
-        <p class="scene-number">Scene 01 // Arrival</p>
-        <h2>What did your character expect to find?</h2>
+<body>
 
-        <img 
-            src="images/arival-archive.png" 
-            alt="bob, the self-built AI robot"
-            class="scene-image"
-        >
-            
+```
+<div class="app">
 
-        <p>Bob had spent his entire existence trapped on the planet Malak.
-        After building himself from scraps, he created a powerful spaceship
-        and finally escaped the planet in search of freedom.</p>
-      </section>
+    <header>
+        <p class="eyebrow">MY APP</p>
+        <h1>My 5-Slide Adventure</h1>
+        <p>Use the buttons to move through the slides.</p>
+    </header>
 
-      <section class="scene" data-scene="1" hidden>
-        <p class="scene-number">Scene 02 // Discovery</p>
-        <h2>What changed the mission?</h2>
-        <img  
-        src="images/Civic-Archive.png" 
-        alt="The massive steampunk Civic Archive"
-        class="scene-image">
-        
-      <p>While traveling through deep space, 
-        Bob discovered the mysterious Civic Archive. Inside, 
-        he found a massive steampunk world filled with advanced machines, 
-        glowing lights, gears, and steam. Bob soon realized the Archive might hold clues about
-         his creators and why he was left on Malak.</p>
-      </section>
+    <main>
 
-      <section class="scene" data-scene="2" hidden>
-        <p class="scene-number">Scene 03 // Outcome</p>
-        <h2>What should Kairova do next?</h2>
-        
-        <img
-        src="images/Outcome-archive.png" 
-        alt="The massive steampunk Civic Archive"
-        class="scene-image"
-        
-        >
+        <!-- SLIDE 1 -->
+        <section class="slide active">
+            <h2>Slide 1: Welcome</h2>
+            <p>Welcome to my app!</p>
+            <div class="slide-number">1 / 5</div>
+        </section>
 
-        <p>Kairova realizes escaping Malak was only the beginning. She should explore the Civic Archive, 
-          search its databases, and uncover the truth about her creation and purpose..</p>
-      </section>
+        <!-- SLIDE 2 -->
+        <section class="slide">
+            <h2>Slide 2: The Beginning</h2>
+            <p>This is the beginning of the story.</p>
+            <div class="slide-number">2 / 5</div>
+        </section>
 
-      <nav class="scene-controls" aria-label="Story scenes">
-        <button id="previous-scene" type="button">Previous</button>
-        <span id="scene-status" aria-live="polite">Scene 1 of 3</span>
-        <button id="next-scene" type="button">Next</button>
-      </nav>
+        <!-- SLIDE 3 -->
+        <section class="slide">
+            <h2>Slide 3: Discovery</h2>
+            <p>Something interesting has been discovered!</p>
+            <div class="slide-number">3 / 5</div>
+        </section>
+
+        <!-- SLIDE 4 -->
+        <section class="slide">
+            <h2>Slide 4: The Challenge</h2>
+            <p>Now there is a challenge to overcome.</p>
+            <div class="slide-number">4 / 5</div>
+        </section>
+
+        <!-- SLIDE 5 - QUIZ -->
+        <section class="slide">
+
+            <h2>Slide 5: Quiz</h2>
+
+            <div id="quiz">
+                <p id="quiz-question">Question goes here</p>
+
+                <div id="quiz-answers"></div>
+
+                <button id="quiz-next" type="button">
+                    Next Question
+                </button>
+
+                <p id="quiz-result"></p>
+            </div>
+
+            <div class="slide-number">5 / 5</div>
+
+        </section>
+
     </main>
-    <script src="script.js"></script>
-  </body>
+
+    <div class="controls">
+        <button id="previous" type="button">Previous</button>
+        <button id="next" type="button">Next</button>
+    </div>
+
+    <p id="status">Slide 1 of 5</p>
+
+</div>
+
+<script src="script.js"></script>
+```
+
+</body>
 </html>
