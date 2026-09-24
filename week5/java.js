@@ -1,69 +1,227 @@
-//try//
-const scenes = Array.from(document.querySelectorAll(".scene"));
-const previousButton = document.querySelector("#previous-scene");
-const nextButton = document.querySelector("#next-scene");
-const status = document.querySelector("#scene-status");
-const buttons = document.querySelectorAll("button");
-const allButtons = document.querySelectorAll("button");
-let currentScene = 0;
+const slides = document.querySelectorAll(".slide");
 
-function showScene(index) {
-  currentScene = Math.max(0, Math.min(index, scenes.length - 1));
+const previousButton = document.querySelector("#previous");
+const nextButton = document.querySelector("#next");
+const status = document.querySelector("#status");
 
-  scenes.forEach((scene, sceneIndex) => {
-    const isCurrent = sceneIndex === currentScene;
-    scene.hidden = !isCurrent;
-    scene.classList.toggle("is-active", isCurrent);
-  });
+let currentSlide = 0;
 
-  previousButton.disabled = currentScene === 0;
-  nextButton.disabled = currentScene === scenes.length - 1;
-  status.textContent = `Scene ${currentScene + 1} of ${scenes.length}`;
+// ========================================
+// SLIDE NAVIGATION
+// ========================================
+
+function showSlide(index) {
+
+```
+currentSlide = Math.max(
+    0,
+    Math.min(index, slides.length - 1)
+);
+
+slides.forEach((slide, slideIndex) => {
+
+    const isCurrent = slideIndex === currentSlide;
+
+    slide.classList.toggle("active", isCurrent);
+    slide.hidden = !isCurrent;
+
+});
+
+previousButton.disabled = currentSlide === 0;
+nextButton.disabled = currentSlide === slides.length - 1;
+
+status.textContent =
+    `Slide ${currentSlide + 1} of ${slides.length}`;
+```
+
 }
 
-previousButton.addEventListener("click", () => showScene(currentScene - 1));
-nextButton.addEventListener("click", () => showScene(currentScene + 1));
-showScene(0);
+// NEXT SLIDE
+nextButton.addEventListener("click", () => {
 
-buttons.forEach(button => {
-    if (button.textContent.toLowerCase().includes("next")) {
-        button.addEventListener("click", () => {
-
-            document.body.classList.remove("scene-jump");
-
-            // Restart the animation
-            void document.body.offsetWidth;
-
-            document.body.classList.add("scene-jump");
-
-            setTimeout(() => {
-                document.body.classList.remove("scene-jump");
-            }, 500);
-        });
-    }
-});
-allButtons.forEach(button => {
-
-    const buttonText = button.textContent.toLowerCase();
-
-    
-    if (
-        buttonText.includes("previous") ||
-        buttonText.includes("back")
-    ) {
-        button.addEventListener("click", () => {
-
-            document.body.classList.remove("scene-back");
-
-            
-            void document.body.offsetWidth;
-
-            document.body.classList.add("scene-back");
-
-            setTimeout(() => {
-                document.body.classList.remove("scene-back");
-            }, 550); 
-        });
-    }
+```
+if (currentSlide < slides.length - 1) {
+    showSlide(currentSlide + 1);
+}
+```
 
 });
+
+// PREVIOUS SLIDE
+previousButton.addEventListener("click", () => {
+
+```
+if (currentSlide > 0) {
+    showSlide(currentSlide - 1);
+}
+```
+
+});
+
+// ========================================
+// QUIZ
+// ========================================
+
+const questions = [
+
+```
+{
+    question: "What is HTML used for?",
+
+    answers: [
+        "Making the structure of a webpage",
+        "Editing videos",
+        "Creating music",
+        "Connecting a computer to Wi-Fi"
+    ],
+
+    correct: 0
+},
+
+{
+    question: "What is CSS used for?",
+
+    answers: [
+        "Writing computer games",
+        "Styling a webpage",
+        "Storing files",
+        "Sending emails"
+    ],
+
+    correct: 1
+},
+
+{
+    question: "Which language makes webpages interactive?",
+
+    answers: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "JPEG"
+    ],
+
+    correct: 2
+}
+```
+
+];
+
+let currentQuestion = 0;
+let quizScore = 0;
+
+const quizQuestion =
+document.querySelector("#quiz-question");
+
+const quizAnswers =
+document.querySelector("#quiz-answers");
+
+const quizNext =
+document.querySelector("#quiz-next");
+
+const quizResult =
+document.querySelector("#quiz-result");
+
+// SHOW QUESTION
+function showQuestion() {
+
+```
+quizAnswers.innerHTML = "";
+
+quizNext.style.display = "none";
+
+quizResult.textContent = "";
+
+const question = questions[currentQuestion];
+
+quizQuestion.textContent =
+    `${currentQuestion + 1}. ${question.question}`;
+
+
+question.answers.forEach((answer, index) => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+
+    button.textContent = answer;
+
+    button.classList.add("quiz-answer");
+
+
+    button.addEventListener("click", () => {
+
+        const answerButtons =
+            quizAnswers.querySelectorAll(".quiz-answer");
+
+
+        // Stop the user from clicking multiple answers
+        answerButtons.forEach(answerButton => {
+            answerButton.disabled = true;
+        });
+
+
+        // Check answer
+        if (index === question.correct) {
+
+            button.classList.add("correct");
+
+            quizScore++;
+
+        } else {
+
+            button.classList.add("wrong");
+
+            answerButtons[
+                question.correct
+            ].classList.add("correct");
+
+        }
+
+
+        quizNext.style.display = "block";
+
+    });
+
+
+    quizAnswers.appendChild(button);
+
+});
+```
+
+}
+
+// NEXT QUIZ QUESTION
+quizNext.addEventListener("click", () => {
+
+```
+currentQuestion++;
+
+
+if (currentQuestion < questions.length) {
+
+    showQuestion();
+
+} else {
+
+    quizQuestion.textContent = "Quiz Complete!";
+
+    quizAnswers.innerHTML = "";
+
+    quizNext.style.display = "none";
+
+    quizResult.textContent =
+        `You scored ${quizScore} out of ${questions.length}!`;
+
+}
+```
+
+});
+
+// ========================================
+// START
+// ========================================
+
+showSlide(0);
+
+showQuestion();
