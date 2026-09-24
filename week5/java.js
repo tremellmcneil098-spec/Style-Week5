@@ -1,3 +1,4 @@
+//try//
 const scenes = Array.from(document.querySelectorAll(".scene"));
 const previousButton = document.querySelector("#previous-scene");
 const nextButton = document.querySelector("#next-scene");
@@ -61,7 +62,7 @@ allButtons.forEach(button => {
 
             setTimeout(() => {
                 document.body.classList.remove("scene-back");
-            }, 550);
+            }, 550); 
         });
     }
 
