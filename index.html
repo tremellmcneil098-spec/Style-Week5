@@ -1,1 +1,100 @@
-Hello woeld
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Learning Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- MAIN LEARNING PAGE -->
+
+    <h1>I'm ready to learn</h1>
+
+    <div id="paragraphs">
+
+        <p>
+            Welcome to your learning journey! Before beginning the four weeks,
+            take some time to prepare yourself to learn, explore new ideas,
+            and develop new skills. Throughout this experience, you will learn
+            about creating digital projects, building websites, using code,
+            and developing interactive experiences.
+        </p>
+
+        <p>
+            As you move through each week, you will learn new concepts and
+            then build on what you learned previously. Some topics may be
+            completely new, while others may connect to skills you have
+            already practiced. Paying attention to how these concepts connect
+            will help you understand how different parts of a digital project
+            work together.
+        </p>
+
+        <p>
+            The goal of this learning experience is to become more comfortable
+            with technology, programming, design, and problem-solving. You will
+            have opportunities to experiment, make mistakes, test your ideas,
+            and improve your projects. Once you have worked through all four
+            weeks, you will be ready to demonstrate what you learned with the
+            final 10-question quiz.
+        </p>
+
+        <img id="week1-image" src="images/student_vs_creator_mindset.png" alt="Student vs creator mindset">
+        <img id="week2-image" src="images/vscodeinterface.png" alt="VS Code interface">
+        <img id="week3-image" src="images/storyboard.png" alt="Storyboard">
+        <img id="week4-image" src="images/babylon.png" alt="Babylon.js">
+
+    </div>
+
+
+    <!-- 3D BOOK -->
+
+    <div id="book-container">
+        <iframe src="book3d.html" title="3D Book"></iframe>
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <button id="previous-button">Previous</button>
+
+    <button id="next-button">Next</button>
+
+    <br><br>
+
+
+    <!-- QUIZ BUTTON -->
+
+    <button id="quiz-button">Take Quiz</button>
+
+
+    <!-- QUIZ -->
+
+    <div id="quiz-container">
+
+        <h2>Final 10-Question Quiz</h2>
+
+        <p id="quiz-instructions">
+            Answer all 10 questions. Your score will appear at the end.
+        </p>
+
+        <div id="question-container"></div>
+
+        <button id="next-question-button">
+            Next Question
+        </button>
+
+        <div id="quiz-result"></div>
+
+        <button id="back-to-learning-button">
+            Back to Learning
+        </button>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
