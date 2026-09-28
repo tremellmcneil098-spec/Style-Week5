@@ -1,0 +1,594 @@
+const previousButton = document.getElementById("previous-button");
+const nextButton = document.getElementById("next-button");
+const quizButton = document.getElementById("quiz-button");
+
+const heading = document.querySelector("h1");
+const paragraphs = document.querySelectorAll("#paragraphs p");
+const bookContainer = document.getElementById("book-container");
+
+const quizContainer = document.getElementById("quiz-container");
+const questionContainer = document.getElementById("question-container");
+const nextQuestionButton = document.getElementById("next-question-button");
+const quizResult = document.getElementById("quiz-result");
+const backToLearningButton = document.getElementById("back-to-learning-button");
+
+
+/* =========================================
+   WEEK INFORMATION
+========================================= */
+
+let colorNumber = 0;
+
+const colors = [
+    "white",
+    "blue",
+    "red",
+    "yellow",
+    "green"
+];
+
+const messages = [
+    "I'm ready to learn",
+    "Week 1",
+    "Week 2",
+    "Week 3",
+    "Week 4"
+];
+
+
+/* =========================================
+   WEEK PARAGRAPHS
+========================================= */
+
+const paragraphSets = [
+
+    [
+        "Welcome to your learning journey! Before beginning the four weeks, take some time to prepare yourself to learn, explore new ideas, and develop new skills. Throughout this experience, you will learn about creating digital projects, building websites, using code, and developing interactive experiences.",
+
+        "As you move through each week, you will learn new concepts and then build on what you learned previously. Some topics may be completely new, while others may connect to skills you have already practiced. Paying attention to how these concepts connect will help you understand how different parts of a digital project work together.",
+
+        "The goal of this learning experience is to become more comfortable with technology, programming, design, and problem-solving. You will have opportunities to experiment, make mistakes, test your ideas, and improve your projects. Once you have worked through all four weeks, you will be ready to demonstrate what you learned with the final 10-question quiz."
+    ],
+
+
+    [
+        "During Week 1, you will begin learning the foundations of creating digital projects. One of the main technologies you will work with is HTML, which provides the basic structure of a webpage. HTML allows you to organize information using elements such as headings, paragraphs, buttons, images, and other parts of a webpage.",
+
+        "You will also become familiar with the tools and platforms used to create, organize, and share your work. Learning how files and folders are organized is an important part of programming because projects often contain multiple files that work together. You will also begin working with platforms such as GitHub and communication tools used to collaborate and keep track of your projects.",
+
+        "These basic skills create the foundation for everything that comes later. Understanding how a webpage is structured and how your project files are organized makes it easier to add styling, JavaScript, images, and other features later. Week 1 is about developing the basic knowledge and habits you need to begin creating your own digital projects."
+    ],
+
+
+    [
+        "During Week 2, you will build on the HTML skills from Week 1 by learning how HTML, CSS, and JavaScript work together. HTML provides the structure of a webpage, CSS controls how that webpage looks, and JavaScript allows the webpage to respond to actions.",
+
+        "You will practice using JavaScript concepts such as variables, buttons, events, and logic. For example, a button can be connected to JavaScript so that clicking it changes text, moves to another scene, changes a color, or performs another action. You will also learn how to test your code and identify problems when something does not work as expected.",
+
+        "Another important part of Week 2 is learning how to manage and share your projects. Git and GitHub allow you to save versions of your work, make commits, and publish projects so they can be viewed online. README files can provide information about your project, while testing your published website helps make sure that your final link and features work correctly."
+    ],
+
+
+    [
+        "During Week 3, you will focus more heavily on storytelling and creating interactive experiences. A digital project can communicate a story through text, images, characters, scenes, and user interactions. Instead of simply displaying information, you can design a project that allows the user to move through different parts of a story or experience.",
+
+        "You will also work with scenes or slides and learn how navigation can be used to move between them. Features such as Previous and Next buttons allow users to control what they see. Planning the order of scenes and deciding what information belongs in each part can make a project easier to understand and more enjoyable to use.",
+
+        "Testing and improving your project is another important part of Week 3. When something does not work, you can investigate the problem, try a solution, and test the result. This process of experimenting and improving is an important part of programming and design because your first version does not always work perfectly."
+    ],
+
+
+    [
+        "During Week 4, you will bring together many of the skills you have developed during the previous weeks. You will continue working with interactive digital projects while using different types of media, including images and potentially 3D content. Combining media with code can make a project more engaging and can give users more ways to interact with the information.",
+
+        "You will also continue using programming concepts such as variables, events, buttons, and logic. These concepts allow your website to respond to what the user does. For example, JavaScript can keep track of what part of a project the user is viewing and then change the content, appearance, or available options based on that information.",
+
+        "By the end of Week 4, you should have a better understanding of how structure, design, programming, storytelling, media, and interaction can work together to create a complete digital experience. Review what you learned throughout all four weeks before taking the final quiz. When you reach the green Week 4 screen, the quiz will become available."
+    ]
+
+];
+
+
+/* =========================================
+   10 QUESTION QUIZ
+========================================= */
+
+const quizQuestions = [
+
+    {
+        question: "1. What language is used to create the basic structure of a webpage?",
+
+        answers: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Git"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "2. What does CSS mainly control?",
+
+        answers: [
+            "The appearance and layout of a webpage",
+            "The version history of a project",
+            "The content of a Git repository",
+            "The JavaScript variables"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "3. What does JavaScript allow a webpage to do?",
+
+        answers: [
+            "Respond to user actions",
+            "Create folders on your computer",
+            "Replace HTML completely",
+            "Automatically publish to GitHub"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "4. Which platform is commonly used to store and share Git repositories?",
+
+        answers: [
+            "GitHub",
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "5. What is a Git commit used for?",
+
+        answers: [
+            "Recording changes to a project",
+            "Changing a webpage's font",
+            "Creating an HTML heading",
+            "Playing a video"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "6. Why are scenes or slides useful in an interactive project?",
+
+        answers: [
+            "They organize different parts of an experience",
+            "They automatically fix broken code",
+            "They replace JavaScript",
+            "They delete old files"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "7. What should you do when a feature of your project does not work?",
+
+        answers: [
+            "Test and investigate the problem",
+            "Delete the entire project",
+            "Ignore the problem",
+            "Stop using JavaScript"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "8. Which three technologies can work together to build an interactive webpage?",
+
+        answers: [
+            "HTML, CSS, and JavaScript",
+            "Git, GitHub, and README",
+            "Word, Excel, and PowerPoint",
+            "Camera, microphone, and printer"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "9. What can images and 3D content add to a digital project?",
+
+        answers: [
+            "Additional media and interactive experiences",
+            "Automatic grades",
+            "A replacement for all programming",
+            "A replacement for GitHub"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question: "10. What is an important part of improving a digital project?",
+
+        answers: [
+            "Experimenting, testing, and making improvements",
+            "Never changing the first version",
+            "Avoiding all testing",
+            "Deleting every previous version"
+        ],
+
+        correct: 0
+    }
+
+];
+
+
+/* =========================================
+   QUIZ VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+let score = 0;
+let answerSelected = false;
+
+
+/* =========================================
+   UPDATE WEEK PAGE
+========================================= */
+
+function updatePage() {
+
+    document.body.style.backgroundColor = colors[colorNumber];
+
+    heading.textContent = messages[colorNumber];
+
+
+    paragraphs.forEach(function(paragraph, index) {
+
+        paragraph.textContent =
+            paragraphSets[colorNumber][index];
+
+    });
+
+    const week1Image = document.getElementById("week1-image");
+
+if (colorNumber === 1) {
+    week1Image.style.display = "block";
+} else {
+    week1Image.style.display = "none";
+}
+
+const week2Image = document.getElementById("week2-image");
+const week3Image = document.getElementById("week3-image");
+const week4Image = document.getElementById("week4-image");
+
+week2Image.style.display = colorNumber === 2 ? "block" : "none";
+week3Image.style.display = colorNumber === 3 ? "block" : "none";
+week4Image.style.display = colorNumber === 4 ? "block" : "none";
+
+    /* Show 3D book ONLY on first screen */
+
+    if (colorNumber === 0) {
+
+        bookContainer.style.display = "block";
+
+    } else {
+
+        bookContainer.style.display = "none";
+
+    }
+
+
+    /* Show quiz button ONLY on Week 4 */
+
+    if (colorNumber === 4) {
+
+        quizButton.style.display = "inline-block";
+
+    } else {
+
+        quizButton.style.display = "none";
+
+    }
+
+
+    /* Make sure quiz is hidden */
+
+    quizContainer.style.display = "none";
+}
+
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+
+nextButton.addEventListener("click", function() {
+
+    if (colorNumber < 4) {
+
+        colorNumber++;
+
+        updatePage();
+
+    }
+
+});
+
+
+/* =========================================
+   PREVIOUS BUTTON
+========================================= */
+
+previousButton.addEventListener("click", function() {
+
+    if (colorNumber > 0) {
+
+        colorNumber--;
+
+        updatePage();
+
+    }
+
+});
+
+
+/* =========================================
+   OPEN QUIZ
+========================================= */
+
+quizButton.addEventListener("click", function() {
+
+    heading.style.display = "none";
+
+    paragraphs.forEach(function(paragraph) {
+
+        paragraph.style.display = "none";
+
+    });
+
+    bookContainer.style.display = "none";
+
+    previousButton.style.display = "none";
+
+    nextButton.style.display = "none";
+
+    quizButton.style.display = "none";
+
+
+    quizContainer.style.display = "block";
+
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    quizResult.textContent = "";
+
+    nextQuestionButton.style.display = "inline-block";
+
+    showQuestion();
+
+});
+
+
+/* =========================================
+   SHOW QUESTION
+========================================= */
+
+function showQuestion() {
+
+    answerSelected = false;
+
+    questionContainer.innerHTML = "";
+
+    const question = quizQuestions[currentQuestion];
+
+
+    const questionText = document.createElement("h3");
+
+    questionText.textContent = question.question;
+
+    questionContainer.appendChild(questionText);
+
+
+    question.answers.forEach(function(answer, index) {
+
+        const answerButton =
+            document.createElement("button");
+
+        answerButton.textContent = answer;
+
+        answerButton.classList.add("answer-button");
+
+
+        answerButton.addEventListener("click", function() {
+
+            if (answerSelected) {
+
+                return;
+
+            }
+
+
+            answerSelected = true;
+
+
+            const allButtons =
+                document.querySelectorAll(".answer-button");
+
+
+            allButtons.forEach(function(button) {
+
+                button.disabled = true;
+
+            });
+
+
+            if (index === question.correct) {
+
+                score++;
+
+                answerButton.classList.add("correct");
+
+            } else {
+
+                answerButton.classList.add("incorrect");
+
+                allButtons[question.correct]
+                    .classList.add("correct");
+
+            }
+
+        });
+
+
+        questionContainer.appendChild(answerButton);
+
+    });
+
+
+    if (currentQuestion === quizQuestions.length - 1) {
+
+        nextQuestionButton.textContent =
+            "Finish Quiz";
+
+    } else {
+
+        nextQuestionButton.textContent =
+            "Next Question";
+
+    }
+
+}
+
+
+/* =========================================
+   NEXT QUESTION BUTTON
+========================================= */
+
+nextQuestionButton.addEventListener("click", function() {
+
+    if (!answerSelected) {
+
+        alert("Please choose an answer first.");
+
+        return;
+
+    }
+
+
+    if (currentQuestion < quizQuestions.length - 1) {
+
+        currentQuestion++;
+
+        showQuestion();
+
+    } else {
+
+        showFinalScore();
+
+    }
+
+});
+
+
+/* =========================================
+   SHOW FINAL SCORE
+========================================= */
+
+function showFinalScore() {
+
+    questionContainer.innerHTML = "";
+
+    nextQuestionButton.style.display = "none";
+
+
+    const percentage =
+        Math.round((score / quizQuestions.length) * 100);
+
+
+    quizResult.innerHTML =
+        "<h2>Your Score: " +
+        score +
+        " / " +
+        quizQuestions.length +
+        "</h2>" +
+        "<p>You got " +
+        percentage +
+        "% correct!</p>";
+
+
+    const restartButton =
+        document.createElement("button");
+
+    restartButton.textContent =
+        "Take Quiz Again";
+
+
+    restartButton.addEventListener("click", function() {
+
+        currentQuestion = 0;
+
+        score = 0;
+
+        quizResult.innerHTML = "";
+
+        nextQuestionButton.style.display =
+            "inline-block";
+
+        showQuestion();
+
+    });
+
+
+    quizResult.appendChild(restartButton);
+
+}
+
+
+/* =========================================
+   BACK TO LEARNING
+========================================= */
+
+backToLearningButton.addEventListener("click", function() {
+
+    quizContainer.style.display = "none";
+
+    heading.style.display = "block";
+
+    paragraphs.forEach(function(paragraph) {
+
+        paragraph.style.display = "block";
+
+    });
+
+
+    previousButton.style.display = "inline-block";
+
+    nextButton.style.display = "inline-block";
+
+
+    updatePage();
+
+});
+
+
+/* =========================================
+   START WEBSITE
+========================================= */
+
+updatePage();
