@@ -1,0 +1,269 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    margin: 0;
+
+    padding: 40px;
+
+    text-align: center;
+
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    transition: background-color 0.3s ease;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+h1 {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   PARAGRAPHS
+========================================= */
+
+#paragraphs {
+    max-width: 900px;
+
+    margin: 0 auto;
+}
+
+
+#paragraphs p {
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   3D BOOK
+========================================= */
+
+#book-container {
+    width: 800px;
+
+    max-width: 90%;
+
+    height: 500px;
+
+    margin: 30px auto;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+}
+
+
+#book-container iframe {
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+}
+
+
+/* =========================================
+   NORMAL BUTTONS
+========================================= */
+
+button {
+    padding: 12px 24px;
+
+    margin: 10px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    border: none;
+
+    border-radius: 8px;
+}
+
+
+button:hover {
+    opacity: 0.85;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+#quiz-button {
+    margin-top: 20px;
+}
+
+
+#quiz-container {
+    display: none;
+
+    max-width: 800px;
+
+    margin: 40px auto;
+
+    padding: 30px;
+
+    background-color: rgba(255, 255, 255, 0.92);
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    color: black;
+}
+
+
+#quiz-container h2 {
+    margin-bottom: 20px;
+}
+
+
+#quiz-instructions {
+    font-size: 18px;
+
+    margin-bottom: 30px;
+}
+
+
+#question-container h3 {
+    font-size: 22px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   ANSWER BUTTONS
+========================================= */
+
+.answer-button {
+    display: block;
+
+    width: 90%;
+
+    max-width: 600px;
+
+    margin: 12px auto;
+
+    padding: 15px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    border: 2px solid #333;
+
+    border-radius: 8px;
+
+    background-color: white;
+
+    color: black;
+}
+
+
+.answer-button:hover {
+    background-color: #eeeeee;
+}
+
+
+/* Correct answer */
+
+.answer-button.correct {
+    background-color: #90ee90;
+
+    border-color: #228b22;
+}
+
+
+/* Wrong answer */
+
+.answer-button.incorrect {
+    background-color: #ff9999;
+
+    border-color: #cc0000;
+}
+
+
+/* Disabled answers */
+
+.answer-button:disabled {
+    cursor: default;
+}
+
+
+/* =========================================
+   NEXT QUESTION
+========================================= */
+
+#next-question-button {
+    margin-top: 25px;
+
+    padding: 14px 28px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   SCORE
+========================================= */
+
+#quiz-result {
+    margin-top: 30px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+
+#quiz-result p {
+    font-size: 20px;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+#back-to-learning-button {
+    margin-top: 20px;
+}
+
+#week1-image {
+    display: none;
+    width: 600px;
+    max-width: 90%;
+    height: auto;
+    margin: 30px auto;
+}
+
+#week2-image,
+#week3-image,
+#week4-image {
+    display: none;
+    width: 600px;
+    max-width: 90%;
+    height: auto;
+    margin: 30px auto;
+}
