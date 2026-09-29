@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 4 | 3D Web Experience</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">CS110 Learning Quiz</a>
+    <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="week1.html">Week 1</a><a href="week2.html">Week 2</a><a href="week3.html">Week 3</a><a class="active" href="week4.html">Week 4</a><a href="quiz.html">Quiz</a></nav>
+  </header>
+
+  <main class="lesson-page">
+    <section class="lesson-card">
+      <p class="eyebrow">Week 4</p>
+      <h1>Add a 3D Experience</h1>
+      <p>3D content can make a webpage more interactive. The model below is created with HTML and CSS, and JavaScript lets the user pause or restart its movement.</p>
+      <div class="scene" aria-label="Rotating 3D cube demonstration">
+        <div class="cube" id="demo-cube">
+          <div class="face front">HTML</div><div class="face back">CSS</div><div class="face right">JS</div><div class="face left">Git</div><div class="face top">3D</div><div class="face bottom">Web</div>
+        </div>
+      </div>
+      <div class="scene-controls"><button id="toggle-cube" type="button">Pause rotation</button><button id="reset-cube" type="button">Reset view</button></div>
+      <p class="diagram">Create the model → Test the interaction → Share the experience</p>
+      <div class="page-actions"><a class="button secondary" href="week3.html">← Week 3</a><a class="button" href="quiz.html">Take the Quiz →</a></div>
+    </section>
+  </main>
+</body>
+</html>
